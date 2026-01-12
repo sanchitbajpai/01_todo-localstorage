@@ -87,7 +87,13 @@ li.addEventListener("click", (e) =>{
   task.completed = !task.completed;
   li.classList.toggle("completed");
   saveTasks();
-})
+});
+li.querySelector("button").addEventListener("click", (e) =>{
+  e.stopPropagation();
+  tasks = tasks.filter((t) => t.id !== task.id);
+  li.remove();
+  saveTasks();
+});
 todoList.appendChild(li);
 }
 function saveTasks () {
